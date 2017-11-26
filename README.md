@@ -137,5 +137,6 @@ TODO
 
 # Legal
 ```
+libijs is licensed under the MIT license.
 Apple, iTunes, iPhone, iPad, Apple Watch, iPod, and iPod Touch are trademarks of Apple Inc.
 ```
