@@ -1,13 +1,17 @@
 {
   "name": "libijs",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "mceSystems",
+  "license": "MIT",
+  "repository" : {
+    "type" : "git",
+    "url" : "https://github.com/mceSystems/libijs"
+  },
   "dependencies": {
     "bytes": "^3.0.0",
     "cli-table2": "git+https://github.com/jamestalmage/cli-table2.git",
