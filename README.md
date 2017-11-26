@@ -1,6 +1,7 @@
 # libijs 
 A node.js library for communicating with iOS devices over USB.
-This is a pure javascript implementation of libimobiledevice, implementing everything needed for communicating with iOS device services through usbmuxd (the dameon\service responsible for communication with iOS devices over USB).
+
+This is a pure javascript implementation of [libimobiledevice](https://github.com/libimobiledevice/libimobiledevice), implementing everything needed for communicating with iOS device services through usbmuxd (the dameon\service responsible for communication with iOS devices over USB).
 Our goal is to evantually provide most of libimobiledevice's functionality, in an API suitable for node.js.
 
 **Note that libijs is still an early proof of concept, and is not ready for production yet.**
