@@ -51,12 +51,12 @@ const extractZipEntryToBuffer = function extractZipEntryToBuffer(zipFile, entry)
  * @returns {JarvisEmitter}
  */
 const extractFilesToBuffers = function extractFilesToBuffers(zipPath, files) {
-	return meaco(function* main(reject) {
+	return meaco(function* main() {
 		// Open the zip file
 		const [err, zipFile] = yield JarvisEmitter.emitify(yauzl.open)(zipPath, { lazyEntries: true });
 		if (err) {
 			console.log(`Failed to open '${zipPath}: ${err}`);
-			return reject(err);
+			return yield new JarvisEmitter().callError(err);
 		}
 
 		const unzipDonePromise = new JarvisEmitter();
@@ -78,18 +78,20 @@ const extractFilesToBuffers = function extractFilesToBuffers(zipPath, files) {
 			// Extract the current entry if it matched
 			if (extractFileAs) {
 				extractZipEntryToBuffer(zipFile, entry)
-				.done((extractedFile) => {
-					extractedFiles[extractFileAs] = extractedFile;
+					.done((extractedFile) => {
+						extractedFiles[extractFileAs] = extractedFile;
 
-					filesLeftToSearch.delete(extractFileAs);
-					if (0 === filesLeftToSearch.size) {
-						unzipDonePromise.callDone();
-					} else {
-						zipFile.readEntry();
-					}
-				})
-				.error(reject);
-			// Or move on to the next entry
+						filesLeftToSearch.delete(extractFileAs);
+						if (0 === filesLeftToSearch.size) {
+							unzipDonePromise.callDone();
+						} else {
+							zipFile.readEntry();
+						}
+					})
+					.error((err) => {
+						unzipDonePromise.callError(err);
+					});
+				// Or move on to the next entry
 			} else {
 				zipFile.readEntry();
 			}
