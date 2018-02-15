@@ -7,7 +7,8 @@ const appletime = require("./lib/lib/appletime");
 
 module.exports = {
 	createClient(options) {
-		const usbmuxdClient = new UsbmuxdClient(options);
+		const { UsbmuxdClientClass = UsbmuxdClient } = options;
+        const usbmuxdClient = new UsbmuxdClientClass(options);
 		return {
 			usbmuxdClient,
 			deviceManager: new DeviceManager(usbmuxdClient),
