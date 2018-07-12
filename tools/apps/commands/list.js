@@ -9,7 +9,7 @@
 const plist = require("../../..").plist;
 
 // External Modules
-const Table = require("cli-table2");
+const Table = require("cli-table3");
 
 /******************************************************************************
  * Consts

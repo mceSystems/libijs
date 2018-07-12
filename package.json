@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "bytes": "^3.0.0",
-    "cli-table2": "git+https://github.com/jamestalmage/cli-table2.git",
+    "cli-table3": "^0.5.0",
     "debug": "^3.1.0",
     "diskusage": "^0.2.4",
     "fs-extra": "^4.0.2",
